@@ -14,6 +14,9 @@ import { InnerLogger } from './providers/logger/logger';
     new FastifyAdapter({
       logger: true,
     }),
+    {
+      cors: true,
+    },
   );
 
   const logger = await app.resolve(InnerLogger);
