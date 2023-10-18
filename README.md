@@ -1,4 +1,4 @@
-## Por hora é isso!
+## Por hora é isso! 🚀
 
 ```bash
 src/
