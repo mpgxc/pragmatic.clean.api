@@ -1,8 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Notification, notificationFactory } from 'entities/notification';
 import { InnerLogger } from 'infra/providers/logger/logger';
 import { InjectorLoggerService } from 'infra/providers/logger/logger.injector';
 
+@ApiTags('notifications')
 @Controller('notifications')
 export class ListNotificationsController {
   constructor(
@@ -11,6 +13,10 @@ export class ListNotificationsController {
   ) {}
 
   @Get('/')
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'The notifications has been successfully listed.',
+  })
   async handle(): Promise<Notification[]> {
     const notification = notificationFactory({
       title: 'Notification title',
