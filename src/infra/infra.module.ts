@@ -1,9 +1,14 @@
+import { LoggerModule } from '@mpgxc/logger';
 import { Module } from '@nestjs/common';
 import { ControllersModule } from './controllers/controllers.module';
-import { LoggerModule } from './providers/logger/logger.module';
 
 @Module({
-  imports: [LoggerModule.forRoot(), ControllersModule],
+  imports: [
+    LoggerModule.forRoot({
+      isGlobal: true,
+    }),
+    ControllersModule,
+  ],
   controllers: [],
   providers: [],
 })

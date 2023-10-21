@@ -8,6 +8,9 @@ dependencies:
   '@fastify/static':
     specifier: ^6.11.2
     version: 6.11.2
+  '@mpgxc/logger':
+    specifier: ^2.0.0
+    version: 2.0.0(@nestjs/common@10.2.7)
   '@nestjs/common':
     specifier: ^10.0.0
     version: 10.2.7(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -941,6 +944,14 @@ packages:
   /@lukeed/ms@2.0.1:
     resolution: {integrity: sha512-Xs/4RZltsAL7pkvaNStUQt7netTkyxrS0K+RILcVr3TRMS/ToOg4I6uNfhB9SlGsnWBym4U+EaXq0f0cEMNkHA==}
     engines: {node: '>=8'}
+    dev: false
+
+  /@mpgxc/logger@2.0.0(@nestjs/common@10.2.7):
+    resolution: {integrity: sha512-kBOVWBdRHcRnGu2XHeRrYDKsztHR0dVF5nuvaH1YqhMjpobjJJevaT8wlDh45hakL4nJ0PXitqwyUnLn/i4/Qg==}
+    peerDependencies:
+      '@nestjs/common': ^10.0.0
+    dependencies:
+      '@nestjs/common': 10.2.7(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
     dev: false
 
   /@nestjs/cli@10.1.18:

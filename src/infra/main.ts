@@ -1,3 +1,4 @@
+import { LoggerService } from '@mpgxc/logger';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import {
@@ -6,7 +7,6 @@ import {
 } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { InfraModule } from './infra.module';
-import { InnerLogger } from './providers/logger/logger';
 
 (async () => {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -19,7 +19,7 @@ import { InnerLogger } from './providers/logger/logger';
     },
   );
 
-  const logger = await app.resolve(InnerLogger);
+  const logger = await app.resolve(LoggerService);
 
   app.useGlobalPipes(
     new ValidationPipe({
