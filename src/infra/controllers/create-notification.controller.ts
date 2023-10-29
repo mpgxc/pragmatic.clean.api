@@ -1,7 +1,7 @@
 import { LoggerInject, LoggerService } from '@mpgxc/logger';
 import { Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { notificationFactory } from 'domain/notificaiton/notification';
+import { notificationFactory } from 'domain/notification/notification';
 
 @ApiTags('notifications')
 @Controller('notifications')

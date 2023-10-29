@@ -4,7 +4,7 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import {
   Notification,
   notificationFactory,
-} from 'domain/notificaiton/notification';
+} from 'domain/notification/notification';
 
 @ApiTags('notifications')
 @Controller('notifications')
