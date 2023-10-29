@@ -23,7 +23,7 @@ export const entityFactory = <T>(
   props: Omit<T, 'id' | 'updatedAt' | 'createdAt'>,
 ): Entity<T> => ({
   id: randomUUID(),
+  ...(props as T),
   createdAt: new Date(),
   updatedAt: new Date(),
-  ...(props as T),
 });
