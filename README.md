@@ -2,8 +2,21 @@
 
 ```bash
 src/
-├── entities
-│   └── notification.ts
+├── common
+│   ├── commands.ts
+│   ├── events.ts
+│   └── helpers.ts
+├── domain
+│   ├── buyer
+│   │   ├── buyer.ts
+│   │   └── payment-method.ts
+│   ├── events
+│   ├── notification
+│   │   └── notification.ts
+│   └── ordering
+│       ├── address.ts
+│       ├── ordem-item.ts
+│       └── order.ts
 ├── infra
 │   ├── controllers
 │   │   ├── controllers.module.ts
@@ -15,13 +28,9 @@ src/
 │   ├── infra.module.ts
 │   ├── main.ts
 │   └── providers
-│       └── logger
-│           ├── logger.injector.ts
-│           ├── logger.module.ts
-│           └── logger.ts
 └── usecases
 
-10 directories, 9 files
+14 directories, 14 files
 ```
 
 # Modelo de Domínio - E-commerce Delivery Shop
@@ -78,3 +87,15 @@ src/
    - Atributos: informações de entrega, método de pagamento, custos adicionais.
 
 Isso representa um modelo de domínio simples para um e-commerce de delivery. Lembre-se de que a estrutura e os relacionamentos podem variar com base nos requisitos específicos do sistema.
+
+<br>
+<br>
+
+# Este projeto tem como objetivo a modelagem de um domínio, adotando uma abordagem pragmática e baseada em conceitos funcionais
+
+### Referências:
+
+- https://www.thoughtworks.com/insights/blog/microservices/domain-modeling-algebraic-data-types-pt1
+- https://www.thoughtworks.com/insights/blog/architecture/domain-driven-design-in-functional-programming
+- https://www.thoughtworks.com/insights/blog/microservices/ddd-implemented-fp
+- https://doc.rust-lang.org/std/result/enum.Result.html

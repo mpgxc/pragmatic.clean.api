@@ -1,4 +1,4 @@
-import { Aggregate, EntityId, entityFactory } from 'common/helpers';
+import { Aggregate, EntityId, Optional, entityFactory } from 'common/helpers';
 import { randomUUID } from 'crypto';
 import { OrderAddress } from './address';
 import { OrdemItemMethods, OrderItem } from './ordem-item';
@@ -16,19 +16,19 @@ enum OrderStatus {
 type CreateOrderInput = {
   buyerId: EntityId;
   paymentMethodId: EntityId;
-  description?: string;
+  description: Optional<string>;
 };
 
 type OrderStatusFollowUp = {
   status: OrderStatus;
-  description?: string;
+  description: Optional<string>;
   date: Date;
 };
 
 export type Order = Aggregate<{
   orderNumber: string;
   orderDate: Date;
-  description?: string;
+  description: Optional<string>;
   address: OrderAddress;
   status: OrderStatus;
   statusFollowUp: OrderStatusFollowUp[];
