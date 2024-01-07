@@ -21,6 +21,10 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "lib": ["ESNext"]
   }
 }

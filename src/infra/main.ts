@@ -6,17 +6,23 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import {
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult,
+  Context,
+} from 'aws-lambda';
+import { proxy } from 'aws-serverless-fastify';
+import { type FastifyInstance } from 'fastify';
 import { InfraModule } from './infra.module';
 
-(async () => {
+let cache: FastifyInstance;
+
+const server = async (): Promise<FastifyInstance> => {
+  const instance = new FastifyAdapter();
+
   const app = await NestFactory.create<NestFastifyApplication>(
     InfraModule,
-    new FastifyAdapter({
-      logger: true,
-    }),
-    {
-      cors: true,
-    },
+    instance,
   );
 
   const logger = await app.resolve(LoggerService);
@@ -48,7 +54,17 @@ import { InfraModule } from './infra.module';
 
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000, '0.0.0.0');
+  app.setGlobalPrefix('api');
 
-  logger.debug(`Server running 🚀: ${await app.getUrl()}/api`);
-})();
+  app.enableCors();
+
+  await app.init();
+
+  return instance.getInstance();
+};
+
+export const handler = async (
+  event: APIGatewayProxyEvent,
+  context: Context,
+): Promise<APIGatewayProxyResult> =>
+  proxy(cache ?? (await server()), event, context);
